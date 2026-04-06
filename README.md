@@ -26,40 +26,5 @@
 
 Шаг 4. Навигация и передача данных
 - При наступлении события Game Over, используйте Navigator.push для перехода на экран "Итоги". Передайте туда обьект с финальной статистикй для записи в Firebase.
-
-### Шаг 3. Практическая реализация (Пошагово)
-
-1. Настройка окружения и Firebase
-- Создайте проект Flutter. flutter create tetris_cloud.
-- Подключите Firebase через терминал. flutterfire configure.
-- Добавьте зависимости в pubspec.yml:
-  - firebase_core (ядро).
-  - cloud_firestore (база данных).
-
-2. Создание игрового поля
-Используйте GridView.builder для отсортировки сетки 10x20. Каждая ячейка - это Container, цвет которого зависит от того, занята она фигурой или нет.
-
-3. Связь с базой данных (Cloud Integration)
-После завершения игры (Game Over) необходимо отправить результат в коллекцию scores.
-
-Код отправки данных:
-```
-void saveHighScore(int score) async {
-    await FirebaseFirestore.instance.collection('scores').add({
-        'username': 'Player1',
-        'score': score,
-        'date': DateTime.now(),
-    });
-}
-```
-
-4. Создание "Живой" таблицы лидеров
-Используйте StreamBuilder для отображения топ-игроков. Если кто то другой в мире побьет рекорд, списк обновится мгновенно.
-
-```
-stream: FirebaseFirestore.instance
-    .collection('scores')
-    .orderBy('score', descending: true)
-    .limit(10)
     .snapshots(),
 ```
