@@ -26,3 +26,7 @@
 
 Шаг 4. Навигация и передача данных
 - При наступлении события Game Over, используйте Navigator.push для перехода на экран "Итоги". Передайте туда обьект с финальной статистикй для записи в Firebase.
+
+
+
+https://drive.google.com/file/d/1HQtQFyqYLs2F-bf1qkbFq7CrnZVmdnHo/view?usp=sharing
